@@ -64,7 +64,7 @@ var education ={
 	"schools" : [{
 		"name" : "BITS Pilani",
 		"location" : "Pilani",
-		"majors" : ["Communications"],
+		"majors" : ["Communications Engineering"],
 		"degree" : "Masters",
 		"graduation" : 2012,
 		"url" : "http://www.bits-pilani.ac.in/pilani/"
@@ -91,20 +91,19 @@ var education ={
 	"display" : function(){
 		for(var school in this.schools){
 			$("#education").append(HTMLschoolStart);
-			$(".education-entry:last").append(HTMLschoolName.replace("%data%",this.schools[school].name));
-			$(".education-entry:last").append(HTMLschoolDegree.replace("%data%",this.schools[school].degree));
+			$(".education-entry:last").append((HTMLschoolName.replace("%data%",this.schools[school].name + HTMLschoolDegree.replace("%data%",this.schools[school].degree))).replace("#",this.schools[school].url));
+			// $(".education-entry:last").append();
 			$(".education-entry:last").append(HTMLschoolDates.replace("%data%",this.schools[school].graduation));
 			$(".education-entry:last").append(HTMLschoolLocation.replace("%data%",this.schools[school].location));
 			$(".education-entry:last").append(HTMLschoolMajor.replace("%data%",this.schools[school].majors));
-			//$(".education-entry:last").append(HTMLschoolURL.replace("%data%",this.schools[school].url));
+			// $(".education-entry:last").append(HTMLschoolURL.replace("%data%",this.schools[school].url));
 		}
 		$("#education").append(HTMLonlineClasses);
 		for(var course in this.onlineCourses){
 			$("#education").append(HTMLschoolStart);
-			$(".education-entry:last").append(HTMLonlineTitle.replace("%data%",this.onlineCourses[course].title));
-			$(".education-entry:last").append(HTMLonlineSchool.replace("%data%",this.onlineCourses[course].school));
+			$(".education-entry:last").append((HTMLonlineTitle.replace("%data%",this.onlineCourses[course].title + HTMLonlineSchool.replace("%data%",this.onlineCourses[course].school))).replace("#",this.onlineCourses[course].url));
 			$(".education-entry:last").append(HTMLonlineDates.replace("%data%",this.onlineCourses[course].dates));
-			$(".education-entry:last").append(HTMLonlineURL.replace("%data%",this.onlineCourses[course].url));
+			// $(".education-entry:last").append(HTMLonlineURL.replace());
 			
 		}
 	}
@@ -131,6 +130,7 @@ var projects = {
 			$(".project-entry:last").append(HTMLprojectDates.replace("%data%",this.project[proj].dates));
 			$(".project-entry:last").append(HTMLprojectDescription.replace("%data%",this.project[proj].description));
 		}
+		$("#projects").append("<br>");
 	}
 }
 
