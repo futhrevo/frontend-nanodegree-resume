@@ -7,12 +7,13 @@ var bubble = d3.layout.pack()
     .size([diameter, diameter])
     .padding(1.5);
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#skillsChart").append("svg")
     .attr("width", diameter)
     .attr("height", diameter)
     .attr("class", "bubble");
 
-d3.json("flare.json", function(error, root) {
+var jloc ="https://gist.githubusercontent.com/futhrevo/cbace9e13d3264ff01f0/raw/a05a94858375bd0ae023f6950a2b13fac5127637/flare.json";
+d3.json(jloc, function(error, root) {
   var node = svg.selectAll(".node")
       .data(bubble.nodes(classes(root))
       .filter(function(d) { return !d.children; }))

@@ -82,6 +82,11 @@ var education ={
 		"school" : "Udacity",
 		"dates" : 2014,
 		"url" : "https://www.udacity.com/course/c-ud804/"
+	},{
+		"title" : "Intro to HTML and CSS",
+		"school" : "Udacity",
+		"dates" : 2014,
+		"url" : "https://www.udacity.com/course/ud304"
 	}],
 	"display" : function(){
 		for(var school in this.schools){
@@ -152,9 +157,18 @@ function inName(_name){
 	var firstName = names[0][0].toUpperCase() + names[0].slice(1);
 	return (firstName +" "+lastName);
 }
+
+function displayFooter() {
+  for (contact in bio.contacts) {
+    var formattedContact = HTMLcontactGeneric.replace("%data%", bio.contacts[contact]);
+    formattedContact = formattedContact.replace("%contact%", contact);
+    $("#footerContacts").append(formattedContact);
+  }
+}
+
 bio.display();
 projects.display();
 education.display();
 work.display();
-
+displayFooter();
 $("#mapDiv").append(googleMap);
